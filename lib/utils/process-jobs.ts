@@ -277,7 +277,8 @@ export const processJobs = async function (
         job.attrs._id,
         runIn
       );
-      setTimeout(jobProcessing, runIn);
+      const maxDelayValue = 2147483647;
+      setTimeout(jobProcessing, runIn > maxDelayValue ? maxDelayValue : runIn);
     }
 
     /**
